@@ -1,0 +1,19 @@
+sudo mkdir /var/spool/lpd
+
+# Install:
+# - LPR printer driver,
+# - CUPSwrapper printer driver.
+
+sudo ufw allow out 631
+
+
+# SCANNER
+
+# Install:
+# - Scanner driver.
+
+# For Brother DCP-J4110DW
+# brsaneconfig[4 for DCP-J4 series] -a name=DCPJ4110DW model=DCP-J4110DW ip=192.168.2.101
+
+sudo ufw allow out 54921/tcp
+

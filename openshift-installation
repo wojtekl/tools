@@ -1,0 +1,13 @@
+1. Install rhc packages:
+- ruby-full,
+- git-core,
+- gem install rhc,
+- rhc setup.
+
+2.Log into account.
+rhc setup -l
+rhc logout
+
+3.Cloning existing application.
+rhc git-clone -a nazwa_aplikacji
+
