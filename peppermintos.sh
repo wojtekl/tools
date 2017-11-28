@@ -20,6 +20,7 @@ sudo apt-get update
 sudo apt-get autoremove
 sudo apt-get autoclean
 sudo apt-get upgrade
+sudo apt-get install linux-generic
 
 sudo apt-get install xfce4-clipman
 sudo apt-get install ttf-mscorefonts-installer
@@ -48,4 +49,7 @@ sed -i '1i"synclient TouchpadOff=$(synclient -l | grep -c\n\x27TouchpadOff.*=.*0
 
 # super hybrid engine
 # echo "0" | sudo tee cat /sys/devices/platform/eeepc-wmi/cpufv
+
+# firefox popups
+# about:config -> browser.link.open_newwindow.restriction 0
 
