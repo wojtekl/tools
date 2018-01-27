@@ -10,19 +10,14 @@ sudo ufw allow out 80/tcp
 sudo ufw allow out 443/tcp
 sudo ufw allow out 1935/tcp
 
-sudo apt-get purge nemo-dropbox
-sudo apt-get purge python-appindicator
-sudo apt-get purge python-gpgme
-
 sudo add-apt-repository ppa:libreoffice/ppa
 
 sudo apt-get update
 sudo apt-get autoremove
 sudo apt-get autoclean
-sudo apt-get upgrade
 sudo apt-get install linux-generic
+sudo apt-get upgrade
 
-sudo apt-get install xfce4-clipman
 sudo apt-get install ttf-mscorefonts-installer
 sudo apt-get install libreoffice-writer
 sudo apt-get install libreoffice-calc
