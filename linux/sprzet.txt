@@ -1,3 +1,5 @@
+### PRINTER BROTHER
+
 sudo mkdir /var/spool/lpd
 
 # Install:
@@ -13,7 +15,12 @@ sudo ufw allow out 631
 # - Scanner driver.
 
 # For Brother DCP-J4110DW
-# brsaneconfig[4 for DCP-J4 series] -a name=DCPJ4110DW model=DCP-J4110DW ip=192.168.2.101
+# brsaneconfig[4 for DCP-J4 series] -a name=DCPJ4110DW model=DCP-J4110DW ip=192.168.2.110
 
 sudo ufw allow out 54921/tcp
+
+
+
+### BLUETOOTH AUDIO
+sudo pactl load-module module-bluetooth-discover
 

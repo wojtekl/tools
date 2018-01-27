@@ -1,12 +1,5 @@
-rhc create-app application_name tomcat-7 mysql-5.5
-rhc show-app application_name
-rhc restart-app application_name
-
-rhc ssh application_name
-env | grep OPENSHIFT_MYSQL_
-rhc env add OPENSHIFT_MYSQL_MAX_ALLOWED_PACKET=32M -a application_name
-rhc env add OPENSHIFT_MYSQL_DEFAULT_STORAGE_ENGINE=InnoDB -a application_name
-rhc app-restart application_name
+MYSQL_MAX_ALLOWED_PACKET=32M
+MYSQL_DEFAULT_STORAGE_ENGINE=InnoDB
 
 Remove directory src and file pom.xml
 
