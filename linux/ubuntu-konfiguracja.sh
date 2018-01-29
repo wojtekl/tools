@@ -10,6 +10,7 @@ sudo ufw allow out 80/tcp
 sudo ufw allow out 443/tcp
 sudo ufw allow out 1935/tcp
 
+sudo apt-get purge libreoffice-*
 sudo add-apt-repository ppa:libreoffice/ppa
 
 sudo apt-get update
