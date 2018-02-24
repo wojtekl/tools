@@ -18,6 +18,7 @@ sudo apt-get purge libreoffice-common
 sudo apt-get install linux-generic
 sudo apt-get upgrade
 
+sudo apt-get install language-pack-gnome-pl
 sudo apt-get install ttf-mscorefonts-installer
 sudo apt-get install libreoffice-writer
 sudo apt-get install libreoffice-calc
