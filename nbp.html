@@ -33,7 +33,7 @@ let month = d.getMonth() + 1;
 month = month > 9 ? month : '0' + month;
 let day = d.getDate();
 day = day > 10 ? day : '0' + day;
-xhttp.open("GET", "http://api.nbp.pl/api/exchangerates/rates/A/EUR/"
+xhttp.open("GET", "https://api.nbp.pl/api/exchangerates/rates/A/EUR/"
 + d.getFullYear()
 + "-"
 + month
