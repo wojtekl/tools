@@ -1,0 +1,51 @@
+<html>
+<body>
+<div id="demo"></div>
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       let rates = JSON.parse(xhttp.responseText).rates;
+       
+       let table = '<table>';
+       
+       let poprzedni = rates[0].mid;
+       
+       for(let i = 0, d = rates.length; d > i; ++i) {
+         table += '<tr>';
+         
+         table += '<td>' + rates[i].effectiveDate + '</td>';
+         let color = poprzedni > rates[i].mid ? 'green' : 'red';
+         table += '<td style="color: ' + color +'">' + rates[i].mid + '</td>';
+         
+         table += '</tr>';
+         
+         poprzedni = rates[i].mid;
+       }
+       
+       table += '</table>';
+       
+       document.getElementById("demo").innerHTML = table;
+    }
+};
+let d = new Date();
+let month = d.getMonth() + 1;
+month = month > 9 ? month : '0' + month;
+let day = d.getDate();
+day = day > 10 ? day : '0' + day;
+xhttp.open("GET", "http://api.nbp.pl/api/exchangerates/rates/A/EUR/"
++ d.getFullYear()
++ "-"
++ month
++ "-15/"
++ d.getFullYear()
++ "-"
++ month
++
+"-"
++ day
++ "/?format=json", true);
+xhttp.send();
+</script>
+</body>
+</html>
