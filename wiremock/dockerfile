@@ -15,7 +15,7 @@ RUN cd /opt \
 cat << "DOC"\n\
 usage:\n\
 \n\
-Create new mock:\n\
+// create new mock\n\
 await fetch("http://localhost:8080/__admin/mappings/new", \n\
 {\n\
   "method": "POST",\n\
@@ -33,14 +33,14 @@ await fetch("http://localhost:8080/__admin/mappings/new", \n\
 }\n\
 );\n\
 \n\
-Save mock to configuration:\n\
+// save mock to configuration\n\
 await fetch("http://localhost:8080/__admin/mappings/save", \n\
 {\n\
   "method": "POST"\n\
 }\n\
 );\n\
 \n\
-Reset configuration:\n\
+// reset configuration\n\
 await fetch("http://localhost:8080/__admin/mappings/reset", \n\
 {\n\
   "method": "POST"\n\
