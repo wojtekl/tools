@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>Generator</title>
 <style>
 textarea {width: 100%; height: 40%}
 .number {text-align: right;}
@@ -7,22 +8,24 @@ textarea {width: 100%; height: 40%}
 </head>
 <body>
 <div>
-<textarea id="zrodlo" placeholder="Źródło" required autofocus></textarea>
+<textarea id="zrodlo" placeholder="Source" required autofocus></textarea>
 </div>
 <div>
-<input id="wzor" type="text" placeholder="Wzór" autocomplete />
-<input id="numer" type="number" placeholder="Numer" value="1" class="number" />
-<input id="dopelniaj" type="number" placeholder="Dopełniaj do" value="1" class="number" />
-<input id="poczatek" type="text" placeholder="Początek" autocomplete />
-<input id="koniec" type="text" placeholder="Koniec" autocomplete />
+<input id="wzor" type="text" placeholder="Pattern" autocomplete />
+<input id="numer" type="number" placeholder="Start with number    " value="" class="number" />
+<input id="dopelniaj" type="number" placeholder="Fix with 0s to length    " value="" class="number" />
+<input id="poczatek" type="text" placeholder="Prefix" autocomplete />
+<input id="koniec" type="text" placeholder="Postfix" autocomplete />
 </div>
 <div>
-<textarea id="wynik" readonly></textarea>
+<textarea id="wynik" placeholder="Result" readonly></textarea>
 </div>
 <div>
-<button id="wykonaj">Wykonaj</button>
+<button id="podmien">Replace source</button>
+<button id="wykonaj">Process</button>
 </div>
 <div>
+<label for="liczba">Rows:</label>
 <input id="liczba" type="number" value="0" disabled class="number" />
 </div>
 <script>
@@ -59,6 +62,10 @@ document.getElementById("numer").addEventListener("keyup", wykonajEnter);
 document.getElementById("dopelniaj").addEventListener("keyup", wykonajEnter);
 document.getElementById("poczatek").addEventListener("keyup", wykonajEnter);
 document.getElementById("koniec").addEventListener("keyup", wykonajEnter);
+
+document.getElementById("podmien").onclick = function() {
+  document.getElementById("zrodlo").value = document.getElementById("wynik").value;
+};
 </script>
 </body>
 </html>

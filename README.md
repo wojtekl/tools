@@ -23,6 +23,6 @@ docker run `
 # manual
 docker exec wiremock ../man
 ```
+- [Generator](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/generator.html)
 - [nbp](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/nbp.html)
-- [suplementat](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/suplementat.html)
 
