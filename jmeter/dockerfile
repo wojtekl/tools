@@ -1,0 +1,29 @@
+FROM openjdk:15-alpine AS jmeter
+
+LABEL description="Apache JMeter" \
+  maintainer="lesniakwojciech@gmail.com"
+
+ENV JMETER_VERSION="5.2"
+
+RUN cd /opt \
+  && mkdir apache-jmeter \
+  && cd apache-jmeter \
+  && wget --quiet https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-$JMETER_VERSION.zip \
+  && unzip -q apache-jmeter-$JMETER_VERSION \
+  && echo -e '#!/bin/sh\n\
+\n\
+rm --force /opt/apache-jmeter/test/test.log\n\
+/opt/apache-jmeter/apache-jmeter-$JMETER_VERSION/bin/./jmeter -n -t /opt/apache-jmeter/test/*.jmx -l /opt/apache-jmeter/test/test.log $ARGS\n\
+if [ 0 -lt $(grep -c "Test failed" /opt/apache-jmeter/test/test.log) ]\n\
+then\n\
+  echo -e "--- TEST RUN FAILED ---"\n\
+  cat /opt/apache-jmeter/test/test.log\n\
+  exit 1\n\
+fi\n\
+echo -e "--- TEST RUN SUCCEEDED ---"\
+' > run \
+  && chmod +x run \
+  && mkdir test
+
+WORKDIR /opt/apache-jmeter/test
+CMD ["/opt/apache-jmeter/run"]

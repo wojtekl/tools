@@ -23,6 +23,22 @@ docker run `
 # manual
 docker exec wiremock ../man
 ```
+- JMeter
+```
+# run
+docker build `
+  --quiet `
+  --tag jmeter `
+  https://github.com/wojtekl/tools/raw/master/jmeter/dockerfile `
+; `
+docker run `
+  --interactive `
+  --rm `
+  --name jmeter `
+  --volume=C:/apache-jmeter/test:/opt/apache-jmeter/test `
+  --env ARGS="" `
+  jmeter
+```
 - [Generator](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/generator.html)
 - [nbp](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/nbp.html)
 

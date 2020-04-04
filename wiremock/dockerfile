@@ -69,7 +69,7 @@ DOC\
   ]\n\
 }\n\
 DOC\n\
-java -jar /opt/wiremock/wiremock-jre8-standalone-$WIREMOCK_VERSION.jar\
+exec java -jar /opt/wiremock/wiremock-jre8-standalone-$WIREMOCK_VERSION.jar\
 ' > run \
   && chmod +x run \
   && mkdir --parents configuration/mappings
