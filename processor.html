@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Processor</title>
+<style>
+textarea {width: 100%; height: 40%}
+.number {text-align: right;}
+</style>
+</head>
+<body>
+<div>
+<textarea id="zrodlo" placeholder="Source" required autofocus></textarea>
+</div>
+<div>
+<input id="wzor" type="text" placeholder="Pattern" autocomplete />
+<input id="numer" type="number" placeholder="Start with number    " value="" class="number" />
+<input id="dopelniaj" type="number" placeholder="Fix with 0s to length    " value="" class="number" />
+<input id="poczatek" type="text" placeholder="Prefix" autocomplete />
+<input id="koniec" type="text" placeholder="Postfix" autocomplete />
+</div>
+<div>
+<textarea id="wynik" placeholder="Result" readonly></textarea>
+</div>
+<div>
+<button id="podmien">Replace source</button>
+<button id="wykonaj">Process</button>
+</div>
+<div>
+<label for="liczba">Rows:</label>
+<input id="liczba" type="number" value="0" disabled class="number" />
+</div>
+<script>
+function wykonaj() {
+  let linie = document.getElementById("zrodlo").value.trim().split("\n");
+  const wzor = document.getElementById("wzor").value;
+  let numer = document.getElementById("numer").value;
+  const poczatek = document.getElementById("poczatek").value;
+  const koniec = document.getElementById("koniec").value;
+  const dopelniaj = document.getElementById("dopelniaj").value;
+  linie.forEach(function(element, indeks) {
+    let n = numer.toString();
+    while(n.length < dopelniaj) {
+      n = "0" + n;
+    }
+    linie[indeks] = linie[indeks].replace(wzor, poczatek + n + koniec);
+    ++numer;
+  });
+  document.getElementById("wynik").value = linie.join("\n");
+  document.getElementById("liczba").value = linie.length;
+};
+
+document.getElementById("wykonaj").onclick = wykonaj;
+
+function wykonajEnter(event) {
+  if(13 === event.keyCode) {
+    event.preventDefault();
+    wykonaj();
+  }
+}
+
+document.getElementById("wzor").addEventListener("keyup", wykonajEnter);
+document.getElementById("numer").addEventListener("keyup", wykonajEnter);
+document.getElementById("dopelniaj").addEventListener("keyup", wykonajEnter);
+document.getElementById("poczatek").addEventListener("keyup", wykonajEnter);
+document.getElementById("koniec").addEventListener("keyup", wykonajEnter);
+
+document.getElementById("podmien").onclick = function() {
+  document.getElementById("zrodlo").value = document.getElementById("wynik").value;
+};
+</script>
+</body>
+</html>

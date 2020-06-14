@@ -2,70 +2,60 @@
 <head>
 <title>Generator</title>
 <style>
-textarea {width: 100%; height: 40%}
-.number {text-align: right;}
+.kolumna {float: left; width: 48%; margin: 0 1%}
+#wynik {width: 100%; height: 100%}
+#wzor {width: 100%; height: 44%; margin: 1% 0}
+#dane {width: 100%; height: 44%; margin: 1% 0}
 </style>
 </head>
 <body>
-<div>
-<textarea id="zrodlo" placeholder="Source" required autofocus></textarea>
-</div>
-<div>
-<input id="wzor" type="text" placeholder="Pattern" autocomplete />
-<input id="numer" type="number" placeholder="Start with number    " value="" class="number" />
-<input id="dopelniaj" type="number" placeholder="Fix with 0s to length    " value="" class="number" />
-<input id="poczatek" type="text" placeholder="Prefix" autocomplete />
-<input id="koniec" type="text" placeholder="Postfix" autocomplete />
-</div>
-<div>
+<div class="kolumna">
 <textarea id="wynik" placeholder="Result" readonly></textarea>
 </div>
+<div class="kolumna">
 <div>
-<button id="podmien">Replace source</button>
-<button id="wykonaj">Process</button>
+<textarea id="wzor" placeholder="Pattern" required autofocus></textarea>
 </div>
 <div>
-<label for="liczba">Rows:</label>
-<input id="liczba" type="number" value="0" disabled class="number" />
+<input id="parametr" type="text" placeholder="Parameter" autocomplete />
+<input id="separator" type="text" placeholder="Separator" autocomplete />
+</div>
+<div>
+<textarea id="dane" placeholder="Data" required autofocus></textarea>
+</div>
+<div>
+<button id="wykonaj">Generate</button>
+</div>
 </div>
 <script>
 function wykonaj() {
-  let linie = document.getElementById("zrodlo").value.trim().split("\n");
+  let wynik = [];
   const wzor = document.getElementById("wzor").value;
-  let numer = document.getElementById("numer").value;
-  const poczatek = document.getElementById("poczatek").value;
-  const koniec = document.getElementById("koniec").value;
-  const dopelniaj = document.getElementById("dopelniaj").value;
-  linie.forEach(function(element, indeks) {
-    let n = numer.toString();
-    while(n.length < dopelniaj) {
-      n = "0" + n;
-    }
-    linie[indeks] = linie[indeks].replace(wzor, poczatek + n + koniec);
-    ++numer;
+  const parametr = document.getElementById("parametr").value;
+  const separator = document.getElementById("separator").value;
+  document.getElementById("dane").value.trim().split("\n").forEach(function(element, indeks) {
+    let obiekt = wzor;
+    element.trim().split(separator).forEach(function(element, indeks) {
+      obiekt = obiekt.replace(parametr + indeks, element);
+    });
+    wynik.push(obiekt);
   });
-  document.getElementById("wynik").value = linie.join("\n");
-  document.getElementById("liczba").value = linie.length;
+  document.getElementById("wynik").value = wynik.join("\n");
 };
 
 document.getElementById("wykonaj").onclick = wykonaj;
 
 function wykonajEnter(event) {
-  if(13 === event.keyCode) {
+  if(39 === event.keyCode) {
     event.preventDefault();
     wykonaj();
   }
 }
 
 document.getElementById("wzor").addEventListener("keyup", wykonajEnter);
-document.getElementById("numer").addEventListener("keyup", wykonajEnter);
-document.getElementById("dopelniaj").addEventListener("keyup", wykonajEnter);
-document.getElementById("poczatek").addEventListener("keyup", wykonajEnter);
-document.getElementById("koniec").addEventListener("keyup", wykonajEnter);
-
-document.getElementById("podmien").onclick = function() {
-  document.getElementById("zrodlo").value = document.getElementById("wynik").value;
-};
+document.getElementById("dane").addEventListener("keyup", wykonajEnter);
+document.getElementById("parametr").addEventListener("keyup", wykonajEnter);
+document.getElementById("separator").addEventListener("keyup", wykonajEnter);
 </script>
 </body>
 </html>

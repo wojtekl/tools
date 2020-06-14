@@ -39,6 +39,7 @@ docker run `
   --env ARGS="" `
   jmeter
 ```
+- [Processor](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/processor.html)
 - [Generator](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/generator.html)
 - [nbp](https://htmlpreview.github.io/?https://github.com/wojtekl/tools/blob/master/nbp.html)
 
