@@ -1,0 +1,10 @@
+1. Create lightdm.conf file in /etc/lightdm.
+2. Put in created file:
+[SeatDefaults]
+autologin-guest=false
+autologin-user=username
+autologin-user-timeout=0
+autologin-session=lightdm-autologin
+greeter-session=lightdm-webkit-greeter
+user-session=lxde
+

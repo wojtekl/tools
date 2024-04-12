@@ -1,0 +1,62 @@
+# Stworzone przez Wojciecha Leśniaka dla 
+# PLATFORMY OBSŁUGI NAUKI PLATON U3
+# wojtekel na protonmail kropka ch
+# http://mojemiejsce-wojtekel.rhcloud.com
+# http://instagram.com/naimiemiwojtek
+# 22 października 2016
+
+#!/bin/bash
+
+FULLADDRESS=10.16.6.1
+SERVERPORT=3389
+SCREENMODE=/f # /size:1366x768
+SESSIONBPP=/bpp:16
+USEMULTIMON= # /multimon
+DECORATIONS= # +decorations
+GATEWAYHOSTNAME=rd.pcz.cloud.pionier.net.pl
+USERNAME= # platon\\pcz-login
+COMPRESSION=+compression
+AUDIOMODE=/audio-mode:2 # /sound:*
+AUDIOCAPTUREMODE= # /microphone:*
+VIDEOPLAYBACKMODE= # /multimedia:*
+CONNECTIONTYPE=/network:1
+DRIVESTOREDIRECT=+home-drive # +drives /drive:/mnt
+REDIRECTCLIPBOARD=+clipboard
+REDIRECTCOMPORTS= # /serial:* /parallel:*
+REDIRECTSMARTCARDS= # /smartcards:*
+REDIRECTPRINTER= # /printer:*
+DEVICESTOREDIRECT=/usb:*
+ALLOWFONTSMOOTHING= # +fonts
+ALLOWDESKTOPCOMPOSITION= # +aero
+DISABLEFULLWINDOWDRAG= # +window-drag
+DISABLEMENUANIMS= # +menu-anims
+DISABLETHEMES=-themes
+DISABLEWALLPAPER=-wallpaper
+GDIRENDERING=/gdi:hw # sw
+CERTIGNORE= # /cert-ignore
+AUTHENTICATIONLEVEL= # -authentication
+DISABLECURSORSETTING= # -mouse-motion
+BITMAPCACHEPERSISTENABLE= # -bitmap-cache
+
+RESERVATIONLOGIN= # /u:Administrator
+RESERVATIONPASSWORD= # /p:Di4dMREA
+
+if [ -z $USERNAME ]; then
+  echo Podaj login do portalu użytkownika:
+  read USERNAME
+fi
+echo Podaj hasło do portalu użytkownika:
+read -s phaslo
+if [ -z $RESERVATIONLOGIN ]; then
+  echo Podaj login do rezerwacji:
+  read rlogin
+  RESERVATIONLOGIN=/u:$rlogin
+fi
+if [ -z $RESERVATIONPASSWORD ]; then
+  echo Podaj hasło do rezerwacji:
+  read -s rhaslo
+  RESERVATIONPASSWORD=/p:$rhaslo
+fi
+
+xfreerdp $SCREENMODE $SESSIONBPP $USEMULTIMON $DECORATIONS $COMPRESSION $AUDIOMODE $AUDIOCAPTUREMODE $VIDEOPLAYBACKMODE $CONNECTIONTYPE $DRIVESTOREDIRECT $REDIRECTCLIPBOARD $REDIRECTCOMPORTS $REDIRECTSMARTCARDS $REDIRECTPRINTER $DEVICESTOREDIRECT $ALLOWFONTSMOOTHING $ALLOWDESKTOPCOMPOSITION $DISABLEFULLWINDOWDRAG $DISABLEMENUANIMS $DISABLETHEMES $DISABLEWALLPAPER $GDIRENDERING $CERTIGNORE $AUTHENTICATIONLEVEL $DISABLECURSORSETTING $BITMAPCACHEPERSISTENABLE /v:$FULLADDRESS /port:$SERVERPORT $RESERVATIONLOGIN $RESERVATIONPASSWORD /g:$GATEWAYHOSTNAME /gu:$USERNAME /gp:$phaslo &> /dev/null
+
