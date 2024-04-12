@@ -1,0 +1,28 @@
+form:
+    tabs:
+      - name: tabText
+        label: Texts
+        fields:
+          - name: title
+            class: info.magnolia.ui.form.field.definition.TextFieldDefinition
+            label: Title
+          - name: introText
+            class: info.magnolia.ui.form.field.definition.RichTextFieldDefinition
+            label: Introduction text
+      - name: contentSelectionTab
+        label: Content items
+        fields:
+          - name: wpisKatalog
+            label: Select note folder
+            required: true
+            requiredErrorMessage: You must select a note item folder which contains a list of notes!
+            class: info.magnolia.ui.form.field.definition.LinkFieldDefinition
+            targetWorkspace: wpisy
+            appName: wpisy
+            identifierToPathConverter:
+                class: info.magnolia.ui.form.field.converter.BaseIdentifierToPathConverter
+actions:
+    commit:
+        class: info.magnolia.ui.admincentral.dialog.action.SaveDialogActionDefinition
+    cancel:
+        class: info.magnolia.ui.admincentral.dialog.action.CancelDialogActionDefinition

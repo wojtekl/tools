@@ -1,0 +1,5 @@
+templateScript: /moj-szablon/templates/pages/strona.ftl
+renderType: freemarker
+visible: true
+title: Strona
+dialog: moj-szablon:pages/strona

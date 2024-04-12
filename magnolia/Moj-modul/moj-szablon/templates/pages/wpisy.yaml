@@ -1,0 +1,5 @@
+templateScript: /moj-szablon/templates/pages/wpisy.ftl
+renderType: freemarker
+visible: true
+title: Wpisy
+dialog: moj-szablon:pages/wpisy
