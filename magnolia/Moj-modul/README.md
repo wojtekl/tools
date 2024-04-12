@@ -2,10 +2,9 @@
 note with image on webpage Magnolia CMS module
 
 ## SCREENSHOTS
-![Preview](/preview.png)
+![Preview](preview.png)
 
 ## AUTHORS
-[wojtekel](http://mojemiejsce-wojtekel.rhcloud.com)
 
 ## INSTALL
 1. Move moj-modul/target/moj-modul-1.0.jar to webapps/ROOT/WEB-INF/lib.
@@ -13,7 +12,3 @@ note with image on webpage Magnolia CMS module
 3. Select node and type wpisy.
 4. Navigate to Security, ROLES, anonymous, Edit role, ACCESS CONTROL LISTS and click ADD NEW.
 5. Type Wpisy Read-only Sub nodes /.
-
-## DONATE
-It's all free, but you know life's a b*tch and we need money to survive. So if you liked my work and want to donate me please send me an e-mail for details.
-
