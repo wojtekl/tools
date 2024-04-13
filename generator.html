@@ -36,7 +36,7 @@ function wykonaj() {
   document.getElementById("dane").value.trim().split("\n").forEach(function(element, indeks) {
     let obiekt = wzor;
     element.trim().split(separator).forEach(function(element, indeks) {
-      obiekt = obiekt.replace(parametr + indeks, element);
+      obiekt = obiekt.replaceAll(`[${parametr}${indeks}]`, element);
     });
     wynik.push(obiekt);
   });
